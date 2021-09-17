@@ -1,0 +1,24 @@
+class Solution:
+    def reverseOnlyLetters(self, s: str) -> str:
+        
+        list_item=list(s)
+        left=0
+        right=len(list_item)-1
+        reverse=[None] * len(list_item)
+        while left<= right:  
+            if list_item[left].isalpha():
+                if list_item[right].isalpha() :
+                    reverse[left]=list_item[right]
+                    reverse[right]= list_item[left]          
+                else:
+                    reverse[right]= list_item[right]
+                    reverse[left] = list_item[left]
+                    left-=1
+            else:
+                reverse[left] = list_item[left]
+                reverse[right]= list_item[right]
+                right+=1
+            left+=1
+            right-=1
+        reverse_num = "".join(reverse)
+        return reverse_num
