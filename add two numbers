@@ -24,3 +24,4 @@ class Solution:
             sum_st = sum_st/10
         return sum_list
         
+
