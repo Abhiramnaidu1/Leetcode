@@ -1,0 +1,17 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        import re
+        first = re.sub("[^\w]", "", str(x));
+        list_number = list(str(first))
+        list_number.reverse()
+        rev = ''.join(list_number)
+        if x<=0:
+            rev = int(rev)*-1
+        else:
+            rev = int(rev)
+        p=pow(2,31)
+        if rev in range(-p,p-1):
+            return rev
+        else:
+            return 0
+        
