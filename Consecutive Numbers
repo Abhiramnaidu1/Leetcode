@@ -1,0 +1,9 @@
+with temp as (
+select id,num
+from Logs 
+)
+
+select distinct(t1.num) as ConsecutiveNums from temp t1
+INNER JOIN temp t2 ON t2.id = t1.id+1
+INNER JOIN temp t3 ON t3.id = t2.id+1
+where t1.num=t2.num and t3.num=t2.num
