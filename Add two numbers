@@ -6,26 +6,24 @@
 class Solution:
     
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        l1_s=0
-        l2_s=0
-        
+        import math
+        l1_s=''
+        l2_s=''
         while l1:
             k=l1.val
             l1=l1.next
-            l1_s =l1_s*10 +k
+            l1_s =str(k) +  l1_s  
         while l2:
             p=l2.val
             l2=l2.next
-            l2_s =l2_s*10 +p  
-        c=int(str(l1_s)[::-1]) +int((str(l2_s)[::-1]))
-        print(int(str(l1_s)[::-1]))
-        
-        l3=temp=ListNode()
+            l2_s =str(p) +l2_s 
+        c=int(l1_s) +int(l2_s)
+        print(c)
+        l3=temp=ListNode(c%10)
         if c==0:
             return ListNode(0)
-        while c>0:
+        while c:
             temp.next = ListNode(c%10)
             temp=temp.next
-            c=floor(c/10)
+            c=math.floor(c//10)  
         return l3.next
-    
