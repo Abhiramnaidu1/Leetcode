@@ -1,0 +1,35 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        roman_dict ={
+            'IV':4,
+            'IX':9,
+            'XL':40,
+            'XC':90,
+            'CD':400,
+            'CM':900,
+            'I':1,
+            'V':5,
+            'X':10,
+            'L':50,
+            'C':100,
+            'D':500,
+            'M':1000
+        }
+        # print(roman_dict['V'])
+        roman_add=0
+        
+        ls=list(s)
+        for i in range(len(ls)):
+            
+            if i+1 <len(ls):
+                if ls[i]+ls[i+1] in roman_dict:
+                    k=ls[i]+ls[i+1]
+                    c=roman_dict[k]-roman_dict[ls[i+1]]
+                    roman_add +=c
+                else:
+                    c=roman_dict[ls[i]]
+                    roman_add +=c
+            else:
+                c=roman_dict[ls[i]]
+                roman_add +=c
+        return roman_add
