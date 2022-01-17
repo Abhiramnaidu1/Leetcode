@@ -1,0 +1,22 @@
+class Solution(object):
+    def divideString(self, s, k, fill):
+        """
+        :type s: str
+        :type k: int
+        :type fill: str
+        :rtype: List[str]
+        """
+        r=len(list(s))%k
+       
+       
+        if r!=0:
+            s_up = s + (fill*(k-r))
+        else:
+            s_up =s
+       
+        print(s_up)
+        p=[]
+        for i in range(len(s_up)/k):
+            item =s_up[k*i:k*(i+1)]
+            p.append(item)
+        return p
