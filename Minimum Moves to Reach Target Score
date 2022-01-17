@@ -1,0 +1,26 @@
+class Solution(object):
+    def minMoves(self, target, maxDoubles):
+        """
+        :type target: int
+        :type maxDoubles: int
+        :rtype: int
+        """
+        count=0
+        double_count=0
+        while target >1:
+            # print(target)
+            if double_count < maxDoubles and maxDoubles!=0:
+                if target%2 ==0:
+                    target = target/2
+                    count +=1
+                    double_count+=1
+                elif target%2 == 1:
+                    target =(target-1)/2
+                    count+=2
+                    double_count+=1
+            else:
+                count +=(target -1)
+                target =1
+            print(target)
+            print(double_count)
+        return count
