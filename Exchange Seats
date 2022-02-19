@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+select (
+        case 
+        when id%2!=0 and c!=id then id+1 #for odd
+        when id%2!=0 and c =id then id # for last odd number
+        when id%2=0 then id-1 #for even 
+        end) as id,
+        student from seat,(select count(*) as c from seat) as max_seats
+        order by id asc;
