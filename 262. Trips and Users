@@ -1,0 +1,18 @@
+# Write your MySQL query statement below
+
+with unbannedusers as 
+(select request_at,status,id from Trips t , Users u,users d where
+t.client_id=u.users_id and t.driver_id=d.users_id and u.banned in('No') and d.banned in ('No')
+)
+
+select c.request_at Day,round(coalesce(count_cancell,0)/count_total,2) as "Cancellation Rate"
+from (select a.request_at,count_total, count_cancell
+      from (select request_at,count(id) as count_total
+            from unbannedusers
+           group by request_at) a
+     left join (select request_at,count(id) as count_cancell 
+                from unbannedusers
+                where Status in('cancelled_by_driver', 'cancelled_by_client')
+                group by request_at) b
+     on a.request_at =b.request_at) c
+    where c.request_at in ('2013-10-01','2013-10-02','2013-10-03')
