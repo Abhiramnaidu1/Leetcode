@@ -1,0 +1,19 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        list_s=list(s)
+       
+        final_count=0
+        temp=[]
+        for i in range(len(list_s)):
+            for j in range(i,len(list_s)):
+                if list_s[j] not in temp:
+                    temp.append(list_s[j])
+                else:
+                    break
+            count=len(temp)
+            print(temp)
+            temp=[]
+            if count>final_count:
+                final_count=count
+        return final_count
+        
