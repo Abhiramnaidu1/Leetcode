@@ -1,0 +1,21 @@
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        nl=len(needle)
+        if needle == "" and haystack =="":
+            return 0
+        for i in range(len(haystack)):
+            if needle == haystack[i:i+nl]:
+                return i
+        else:
+            return -1
+            
+            
+            
+    class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle == "":
+            return 0
+        elif needle not in haystack:
+            return -1
+        elif needle in haystack:
+            return haystack.index(needle)
