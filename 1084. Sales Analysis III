@@ -1,0 +1,16 @@
+# Write your MySQL query statement below
+
+select a.product_id,a.product_name
+from Product a
+where a.product_id in
+(
+    select c.product_id from
+(select product_id from Sales
+    where sale_date between '2019-01-01' and '2019-03-31') c
+    Left Join 
+    (select product_id from Sales
+    where sale_date not between '2019-01-01' and '2019-03-31') b
+    on a.product_id=b.product_id
+    where b.product_id is null
+    
+)
