@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+
+select Users.user_id buyer_id,join_date, COALESCE(orders_count,0) orders_in_2019
+from (select buyer_id, count(order_id) orders_count from Orders 
+      where EXTRACT(year from order_date) =2019
+     group by buyer_id
+     ) a
+     right join Users
+     on Users.user_id = a.buyer_id
