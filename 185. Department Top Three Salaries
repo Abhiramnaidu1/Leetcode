@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+
+select Department,Employee,Salary
+from (
+select Department.name as Department, Employee.name as Employee,Salary, DENSE_RANK() over(partition by departmentid order by salary desc) sal_rank
+from Employee 
+join Department
+on Employee.departmentId=Department.id) temp
+where sal_rank<4
