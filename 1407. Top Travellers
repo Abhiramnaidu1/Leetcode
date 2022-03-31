@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+select name,COALESCE(tra_distance,0) travelled_distance
+from Users
+left join 
+(
+select user_id, SUM(distance) tra_distance
+from Rides
+group by user_id) b
+on Users.id = user_id
+order by travelled_distance desc, name
