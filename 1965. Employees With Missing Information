@@ -1,0 +1,12 @@
+# Write your MySQL query statement below
+
+select employee_id
+from (
+select employee_id,  count(employee_id) emp_count from 
+(select employee_id from Employees
+ UNION ALL
+ select employee_id from Salaries) temp
+ 
+ group by employee_id) temp2
+ where emp_count =1
+ order by employee_id asc
