@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+
+select stock_name, SUM(new_price) capital_gain_loss
+from (select stock_name,
+ (case when operation = 'Buy'
+  then price* -1
+  else price 
+  end) new_price
+ from Stocks) temp
+ group by stock_name
