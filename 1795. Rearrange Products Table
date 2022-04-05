@@ -1,0 +1,25 @@
+# Write your MySQL query statement below
+
+select product_id, store, price 
+from (select product_id, 
+      case when store1 
+      then 'store1' 
+      end  store , 
+      store1 price 
+      from Products 
+        union
+      select product_id, 
+      case when store2 
+      then 'store2' 
+      end store , 
+      store2 price 
+      from Products 
+        union
+      select product_id, 
+      case when store3 
+      then 'store3' 
+      end store , 
+      store3 price 
+      from Products 
+     ) temp
+where store is not null
